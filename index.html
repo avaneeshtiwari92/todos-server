@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <title> Todo App</title>
+
+</head>
+
+<script>
+
+    function onPress(){
+        fetch("http://localhost:3000/todos", {
+            method: "GET"
+        }).then((res) => {
+            res.json().then((data) => {
+                console.log(data)
+            });
+        });
+    }
+</script>
+
+<body>
+    Todo Title
+    <input type="text" id="title"></input>
+    Todo Description
+    <input type="text" id="title"></input>
+    <button onclick="onPress()">send todo</button>
+</body>
+
+</html>

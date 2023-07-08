@@ -1,9 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser")
 const fs = require("fs")
+const path = require("path")
+const cors = require("cors")
 
 const app = express()
 app.use(bodyParser.json());
+app.use(cors());
+
 const port = 3000
 
 app.get('/todos', (req, res) => {
@@ -29,6 +33,10 @@ app.post('/todos', (req, res) => {
         });
     });
 });
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
